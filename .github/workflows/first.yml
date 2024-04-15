@@ -10,6 +10,8 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      SLACK_WEBHOOK_URL: ${{secrets.SLACK_WEBHOOK_URL}}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -24,3 +26,11 @@ jobs:
 
       - name: Build Project
         run: npm run build
+
+      - name: SLack Notification on success
+        uses: act10ns/slack@v1
+        with:
+          status: ${{job.status}}
+          steps: ${{toJson(steps)}}
+          channel: #testing-github-actions
+        if: always()
