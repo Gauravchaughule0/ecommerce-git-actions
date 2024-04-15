@@ -4,5 +4,9 @@ jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
-      - name: my-step
-        run: echo "Hello World! --> "+${{ secrets.REPO_SECRET_KEY }}
+      - name: Starting build
+        run: echo "Hello World!"
+      - name: Build in process
+        run: echo "Build in progress"
+      - name: Build success
+        run: echo "Build successful"
