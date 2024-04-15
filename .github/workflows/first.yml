@@ -5,4 +5,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: my-step
-        run: echo ${{ env.REPO_SECRET_KEY }}
+        run: echo ${{ secrets.REPO_SECRET_KEY }}
